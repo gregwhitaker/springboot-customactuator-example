@@ -1,6 +1,9 @@
 # springboot-customactuator-example
 An example of implementing a custom actuator endpoint in Spring Boot.
 
+The example application is a simple RESTful API for storing and retrieving notes. The custom actuator endpoint allows the
+user to get the count of notes in the repository as well as clear the notes repository.
+
 ## Building the Example
 Run the following command to build the example:
 
