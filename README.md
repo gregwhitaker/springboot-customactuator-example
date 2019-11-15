@@ -1,4 +1,26 @@
 # springboot-customactuator-example
+An example of implementing a custom actuator endpoint in Spring Boot.
+
+## Building the Example
+Run the following command to build the example:
+
+    ./gradlew clean build
+    
+## Running the Example
+Follow the steps below to run the example:
+
+1. Start the application by running the following command:
+
+        ./gradlew bootRun
+        
+2. Run the following command several times to create some notes:
+
+3. Run the following command to retrieve the total count of notes via the actuator endpoint:
+
+4. Run the following command to clear all stored notes via the actuator endpoint:
+
+## Bugs and Feedback
+For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/springboot-customactuator-example/issues).
 
 ## License
 MIT License
