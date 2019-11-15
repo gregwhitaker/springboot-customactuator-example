@@ -6,12 +6,23 @@ Run the following command to build the example:
 
     ./gradlew clean build
     
+### Docker
+Run the following command to build the example application as a Docker image:
+
+    ./gradlew clean buildImage
+    
 ## Running the Example
 Follow the steps below to run the example:
 
-1. Start the application by running the following command:
+1. Start the application:
+
+    If executing the application via Gradle, run the following command:
 
         ./gradlew bootRun
+        
+    If executing the application via Docker, run the following command:
+    
+        docker run -p 8080:8080 gregnetifi/springboot-customactuator-example
         
 2. Run the following command several times to create some notes:
 
