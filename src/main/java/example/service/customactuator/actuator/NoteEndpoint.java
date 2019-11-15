@@ -25,6 +25,6 @@ public class NoteEndpoint {
         GetNoteCountResponse response = new GetNoteCountResponse();
         response.setCount(count);
 
-        return ResponseEntity.ok(count);
+        return ResponseEntity.ok(response);
     }
 }
