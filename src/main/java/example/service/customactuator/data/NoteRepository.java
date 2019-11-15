@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 public class NoteRepository {
-    private final AtomicLong counter = new AtomicLong(1);
+    private final AtomicLong counter = new AtomicLong(0);
     private final Map<Long, Note> notes = new ConcurrentHashMap<>();
 
     public Map<Long, Note> findAll() {
@@ -26,7 +26,9 @@ public class NoteRepository {
         note.setId(counter.incrementAndGet());
         note.setCreateDate(new Date());
 
-        return notes.put(note.getId(), note);
+        notes.put(note.getId(), note);
+
+        return note;
     }
 
     public void delete(Note note) {
