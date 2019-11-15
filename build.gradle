@@ -1,7 +1,10 @@
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+
 plugins {
     id 'org.springframework.boot' version '2.2.1.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
+    id 'com.bmuschko.docker-remote-api' version '3.4.4'
 }
 
 sourceCompatibility = '1.8'
@@ -22,4 +25,11 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+task buildImage(type: DockerBuildImage, dependsOn: build) {
+    buildArgs = ['JAR_FILE': "${bootJar.archiveName}"]
+    dockerFile = file("${projectDir}/Dockerfile")
+    inputDir = file("${projectDir}")
+    tags = ["gregnetifi/${projectDir.name}", "gregnetifi/${projectDir.name}:${version}"]
 }
