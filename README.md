@@ -15,9 +15,27 @@ Follow the steps below to run the example:
         
 2. Run the following command several times to create some notes:
 
+        curl -d '{"title":"Test Note", "text":"This is some test note."}' -H "Content-Type: application/json" -X POST http://localhost:8080/notes
+
 3. Run the following command to retrieve the total count of notes via the actuator endpoint:
 
+        curl http://localhost:8080/actuator/notes/count
+        
+    If successful, you will see the count returned as follows:
+    
+        {"note_count":3}
+
 4. Run the following command to clear all stored notes via the actuator endpoint:
+
+        curl -X DELETE http://localhost:8080/actuator/notes
+        
+5. Finally, verify that the notes repository was cleared by running the following command again:
+
+        curl http://localhost:8080/actuator/notes/count
+        
+    If successful, you will see that the note repository is now empty:
+
+        {"note_count":0}
 
 ## Bugs and Feedback
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/springboot-customactuator-example/issues).
