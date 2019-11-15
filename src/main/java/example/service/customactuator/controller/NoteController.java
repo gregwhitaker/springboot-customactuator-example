@@ -59,6 +59,13 @@ public class NoteController {
 
     @DeleteMapping(value = "/notes/{id}")
     public ResponseEntity<?> deleteNote(@PathVariable("id") long id) {
-        return null;
+        Note noteToDelete = repo.find(id);
+
+        if (noteToDelete != null) {
+            repo.delete(noteToDelete);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
