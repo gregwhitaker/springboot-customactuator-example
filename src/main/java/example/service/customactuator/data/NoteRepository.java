@@ -9,6 +9,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * Repository responsible for storing notes.
+ */
 @Component
 public class NoteRepository {
     private final AtomicLong counter = new AtomicLong(0);
@@ -33,5 +36,9 @@ public class NoteRepository {
 
     public void delete(Note note) {
         notes.remove(note.getId());
+    }
+
+    public void clear() {
+        notes.clear();
     }
 }
