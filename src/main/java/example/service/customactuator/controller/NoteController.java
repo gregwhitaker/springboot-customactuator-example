@@ -22,6 +22,11 @@ public class NoteController {
     private NoteRepository repo;
 
     @PostMapping(value = "/notes")
+    public ResponseEntity<?> createNote() {
+        return null;
+    }
+
+    @GetMapping(value = "/notes")
     public ResponseEntity<?> getNotes() {
         return null;
     }
