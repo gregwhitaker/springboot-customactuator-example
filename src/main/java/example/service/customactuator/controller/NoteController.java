@@ -1,6 +1,8 @@
 package example.service.customactuator.controller;
 
 import example.service.customactuator.controller.model.CreateNoteRequest;
+import example.service.customactuator.controller.model.GetNoteResponse;
+import example.service.customactuator.controller.model.GetNotesResponse;
 import example.service.customactuator.data.NoteRepository;
 import example.service.customactuator.data.model.Note;
 import org.slf4j.Logger;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Map;
 
 /**
  * Controller responsible for adding and deleting notes.
@@ -41,16 +44,22 @@ public class NoteController {
 
     @GetMapping(value = "/notes")
     public ResponseEntity<?> getNotes() {
-        return null;
+        return ResponseEntity.ok(GetNotesResponse.from(repo.findAll().values()));
     }
 
     @GetMapping(value = "/notes/{id}")
-    public ResponseEntity<?> getNote(@PathVariable("id") String id) {
-        return null;
+    public ResponseEntity<?> getNote(@PathVariable("id") long id) {
+        Note note = repo.find(id);
+
+        if (note != null) {
+            return ResponseEntity.ok(GetNoteResponse.from(note));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping(value = "/notes/{id}")
-    public ResponseEntity<?> deleteNote(@PathVariable("id") String id) {
+    public ResponseEntity<?> deleteNote(@PathVariable("id") long id) {
         return null;
     }
 }
